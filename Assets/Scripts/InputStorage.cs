@@ -13,16 +13,27 @@ public static class InputStorage
         0
     };
 
+    private static Dictionary<int, string> mqID = new Dictionary<int, string>();
     private static Dictionary<string, List<string>> myQuestions = new Dictionary<string, List<string>>(); //key = question, value = list of answers
 
+    private static Dictionary<int, string> aqID = new Dictionary<int, string>();
     private static Dictionary<string, List<string>> allQuestions = new Dictionary<string, List<string>>(); //key = question, value = list of answers
 
     
 
     static InputStorage()
     {
-        allQuestions.Add("Ik heb stress wat moet ik doen :(", new List<string>());
+        aqID.Add(0, "Ik heb stress wat moet ik doen :(");
+        aqID.Add(1, "Het gaat niet goed met mij, wattefak al deze shit en shit en shit kanker godverdomme aaaaaaaaaaaaaaaaaa vertel mij wat zou jij doen");
+
+        foreach (string value in aqID.Values)
+        {
+            allQuestions.Add(value, new List<string>());
+        }
+
+        /*allQuestions.Add("Ik heb stress wat moet ik doen :(", new List<string>());
         allQuestions.Add("Het gaat niet goed met mij, wattefak al deze shit en shit en shit kanker godverdomme aaaaaaaaaaaaaaaaaa vertel mij wat zou jij doen", new List<string>());
+        */
     }
 
     //set item into character equipment slot
@@ -37,11 +48,10 @@ public static class InputStorage
         return charList[index];
     }
 
-    
-
     //write a question
     public static void WriteQuestion(string question)
     {
+        mqID.Add(mqID.Count, question);
         myQuestions.Add(question, new List<string>());
     }
 
@@ -59,13 +69,12 @@ public static class InputStorage
     }
 
 
-    //get list of questions by all users
-
     /* 
      * The Get methods below take an int value "type" to specify whether to check for items the user posted, or "other users" 
      * Give it parameter 0 to check myQuestions variable, and 1 for allQuestions
      */
 
+    //get list of questions by all users
     public static List<string> GetQuestions(int type)
     {
         List<string> values = new List<string>();

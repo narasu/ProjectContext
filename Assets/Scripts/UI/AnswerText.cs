@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class AnswerText : MonoBehaviour
 {
     [SerializeField] private Text question;
-    [SerializeField] private int type;
+    [SerializeField] [Tooltip("0 for user question, 1 for other")] private int type;
     [SerializeField] private Font font;
     [SerializeField] private GameObject answerField;
+    [SerializeField] private GameObject upvoteButton;
 
     private List<string> answers;
     private List<GameObject> txtObjList;
@@ -64,13 +65,20 @@ public class AnswerText : MonoBehaviour
             rectTransform.sizeDelta = new Vector2(600, 200);
 
             GameObject field = Instantiate(answerField) as GameObject;
+            field.transform.parent = gameObject.transform;
             Vector3 fieldOffset = new Vector3(0, 0.3f);
             field.transform.position = rectTransform.position + fieldOffset;
-
             rectTransform.localPosition = new Vector3(-50, yPos, 0);
-
             fieldList.Add(field);
-            
+
+            if (type==0)
+            {
+                GameObject upvote = Instantiate(upvoteButton) as GameObject;
+                upvote.transform.parent = gameObject.transform;
+                upvote.transform.localScale = new Vector3(1, 1, 1);
+                Vector3 upvoteOffset = new Vector3(1.59f, 0);
+                upvote.transform.position = field.transform.position + upvoteOffset;
+            }
             yPos -= 155f;
         }
     }

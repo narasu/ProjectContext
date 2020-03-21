@@ -5,13 +5,21 @@ using UnityEngine.UI;
 
 public class PostQuestionButton : UIButton
 {
-    
-    [SerializeField] private Text inputText;
-    [SerializeField] [Tooltip("0 for question, 1 for answer")] private int queryType;
+    [SerializeField] private InputField inputField;
 
-    
+
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void TaskOnClick()
     {
-        InputStorage.WriteQuestion(inputText.text.ToString());
+        if (inputField.text != "")
+        {
+            InputStorage.WriteQuestion(inputField.text.ToString());
+        }
+        inputField.Select();
+        inputField.text = "";
     }
 }
