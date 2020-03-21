@@ -21,7 +21,8 @@ public static class InputStorage
 
     static InputStorage()
     {
-        
+        allQuestions.Add("Ik heb stress wat moet ik doen :(", new List<string>());
+        allQuestions.Add("Het gaat niet goed met mij, wattefak al deze shit en shit en shit kanker godverdomme aaaaaaaaaaaaaaaaaa vertel mij wat zou jij doen", new List<string>());
     }
 
     //set item into character equipment slot
@@ -44,10 +45,24 @@ public static class InputStorage
         myQuestions.Add(question, new List<string>());
     }
 
+    public static void WriteAnswer(string question, string answer)
+    {
+        if (allQuestions.ContainsKey(question))
+        {
+            allQuestions[question].Add(answer);
+
+        }
+        else
+        {
+            Debug.Log("Question \"" + question + "\" does not exist!");
+        }
+    }
+
+
     //get list of questions by all users
 
     /* 
-     * The Get method below takes an int value "type" to specify whether to check for items the user posted, or "other users" 
+     * The Get methods below take an int value "type" to specify whether to check for items the user posted, or "other users" 
      * Give it parameter 0 to check myQuestions variable, and 1 for allQuestions
      */
 
@@ -72,16 +87,38 @@ public static class InputStorage
         return values;
     }
 
-    public static void WriteAnswer(string question, string answer)
+    public static List<string> GetAnswers(int type, string question)
     {
-        if (allQuestions.ContainsKey(question))
+        List<string> values = new List<string>();
+
+        if (type == 0)
         {
-            allQuestions[question].Add(answer);
-            
+            if (allQuestions.ContainsKey(question))
+            {
+                values = myQuestions[question];
+
+            }
+            else
+            {
+                Debug.Log("Question \"" + question + "\" does not exist!");
+            }
         }
-        else 
+        if (type == 1)
         {
-            Debug.Log("Question \"" + question + "\" does not exist!");
+            if (allQuestions.ContainsKey(question))
+            {
+                values = allQuestions[question];
+
+            }
+            else
+            {
+                Debug.Log("Question \"" + question + "\" does not exist!");
+            }
         }
+
+        return values;
     }
+
+    
+    
 }

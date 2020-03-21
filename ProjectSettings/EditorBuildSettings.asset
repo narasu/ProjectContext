@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ask.unity
     guid: ee6ecf11f82ea7d42bbd81d119e88b2b
+  - enabled: 1
+    path: Assets/Scenes/OfferHelp.unity
+    guid: ac652565cd1f66244b4ab8c7df0cac1f
+  - enabled: 1
+    path: Assets/Scenes/Question1.unity
+    guid: 852075140934d2a458388725d9a84c66
   m_configObjects: {}
