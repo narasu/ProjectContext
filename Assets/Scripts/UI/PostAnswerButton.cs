@@ -7,8 +7,7 @@ public class PostAnswerButton : UIButton
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private Text question;
-    [SerializeField] private Text inputText;
-    [SerializeField][Tooltip("0 for question, 1 for answer")] private int queryType;
+    [SerializeField] private InputField inputField;
     
 
     protected override void Start()
@@ -19,8 +18,13 @@ public class PostAnswerButton : UIButton
 
     protected override void TaskOnClick()
     {
-        InputStorage.WriteAnswer(question.text.ToString(), inputText.text.ToString());
-        AnswerText answerText = canvas.GetComponent<AnswerText>();
-        answerText.Refresh();
+        if (inputField.text != "")
+        {
+            InputStorage.WriteAnswer(question.text.ToString(), inputField.text.ToString());
+            AnswerText answerText = canvas.GetComponent<AnswerText>();
+            answerText.Refresh();
+        }
+        inputField.Select();
+        inputField.text = "";
     }
 }

@@ -8,10 +8,13 @@ public class AnswerText : MonoBehaviour
     [SerializeField] private Text question;
     [SerializeField] private int type;
     [SerializeField] private Font font;
+    [SerializeField] private GameObject answerField;
+
     private List<string> answers;
     private List<GameObject> txtObjList;
+    private List<GameObject> fieldList;
 
-    private float yPos = 0f;
+    private float yPos = 300f;
 
     Canvas canvas;
 
@@ -19,6 +22,7 @@ public class AnswerText : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         txtObjList = new List<GameObject>();
+        fieldList = new List<GameObject>();
 
         answers = InputStorage.GetAnswers(type, question.text.ToString());
         Refresh();
@@ -26,16 +30,23 @@ public class AnswerText : MonoBehaviour
 
     public void Refresh()
     {
-        yPos = 0f;
+        yPos = 240f;
 
         foreach (GameObject go in txtObjList)
         {
             Destroy(go);
         }
         txtObjList.Clear();
-        
+
+        foreach (GameObject go in fieldList)
+        {
+            Destroy(go);
+        }
+        fieldList.Clear();
+
         for (int i = 0; i < answers.Count; i++)
         {
+            
             txtObjList.Add(new GameObject());
             txtObjList[i].transform.parent = gameObject.transform;
             txtObjList[i].transform.localScale = new Vector3(1, 1, 1);
@@ -52,7 +63,13 @@ public class AnswerText : MonoBehaviour
             rectTransform.localPosition = new Vector3(0, yPos, 0);
             rectTransform.sizeDelta = new Vector2(600, 200);
 
-            yPos -= 100;
+            GameObject field = Instantiate(answerField) as GameObject;
+            Vector3 fieldOffset = new Vector3(0, 0.3f);
+            field.transform.position = rectTransform.position + fieldOffset;
+            
+            fieldList.Add(field);
+            
+            yPos -= 155f;
         }
     }
 
