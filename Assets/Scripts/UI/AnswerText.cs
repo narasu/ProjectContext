@@ -66,7 +66,9 @@ public class AnswerText : MonoBehaviour
             GameObject field = Instantiate(answerField) as GameObject;
             Vector3 fieldOffset = new Vector3(0, 0.3f);
             field.transform.position = rectTransform.position + fieldOffset;
-            
+
+            rectTransform.localPosition = new Vector3(-50, yPos, 0);
+
             fieldList.Add(field);
             
             yPos -= 155f;
