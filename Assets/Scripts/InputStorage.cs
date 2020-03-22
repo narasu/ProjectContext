@@ -24,6 +24,9 @@ public static class InputStorage
     public static int selectedType;
     public static int selectedQuestion;
 
+    public static int questionsPosted;
+    public static int answersPosted;
+
     public static bool firstTimeStartup;
 
     static InputStorage()
@@ -63,8 +66,18 @@ public static class InputStorage
         myQuestions.Add(question, new List<string>());
     }
 
-    public static void WriteAnswer(string question, string answer)
+    public static void WriteAnswer(string answer)
     {
+        if (selectedType==0)
+        {
+            myQuestions[mqID[selectedQuestion]].Add(answer);
+        }
+
+        if (selectedType == 1)
+        {
+            allQuestions[aqID[selectedQuestion]].Add(answer);
+        }
+        /*
         if (allQuestions.ContainsKey(question))
         {
             allQuestions[question].Add(answer);
@@ -74,6 +87,7 @@ public static class InputStorage
         {
             Debug.Log("Question \"" + question + "\" does not exist!");
         }
+        */
     }
 
     /* 
@@ -118,32 +132,31 @@ public static class InputStorage
         return q;
     }
 
-    public static List<string> GetAnswers(int type, string question)
+    public static List<string> GetAnswers()
     {
         List<string> values = new List<string>();
 
-        if (type == 0)
+        if (selectedType == 0)
         {
-            if (allQuestions.ContainsKey(question))
+            if (mqID.ContainsKey(selectedQuestion))
             {
-                values = myQuestions[question];
+                values = myQuestions[mqID[selectedQuestion]];
 
             }
             else
             {
-                Debug.Log("Question \"" + question + "\" does not exist!");
+                Debug.Log("Question \"" + selectedQuestion + "\" does not exist!");
             }
         }
-        if (type == 1)
+        if (selectedType == 1)
         {
-            if (allQuestions.ContainsKey(question))
+            if (aqID.ContainsKey(selectedQuestion))
             {
-                values = allQuestions[question];
-
+                values = allQuestions[aqID[selectedQuestion]];
             }
             else
             {
-                Debug.Log("Question \"" + question + "\" does not exist!");
+                Debug.Log("Question \"" + selectedQuestion + "\" does not exist!");
             }
         }
 

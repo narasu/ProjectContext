@@ -25,8 +25,11 @@ public class ItemSelection : MonoBehaviour
         itemList = new List<Sprite>();
         itemList.AddRange(Resources.LoadAll<Sprite>("Character/" + itemType));
 
+        currentIndex = InputStorage.ReadFromCharList(typeIndex);
+
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = itemList[currentIndex];
+        
     }
 
     //returns the currently active index

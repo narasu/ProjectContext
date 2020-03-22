@@ -20,7 +20,7 @@ public class PostAnswerButton : UIButton
     {
         if (inputField.text != "")
         {
-            InputStorage.WriteAnswer(question.text.ToString(), inputField.text.ToString());
+            InputStorage.WriteAnswer(inputField.text.ToString());
             AnswerText answerText = canvas.GetComponent<AnswerText>();
             answerText.Refresh();
         }

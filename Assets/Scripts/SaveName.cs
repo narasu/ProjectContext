@@ -17,6 +17,7 @@ public class SaveName : UIButton
     protected override void TaskOnClick()
     {
         InputStorage.username = username.text;
+        InputStorage.firstTimeStartup = false;
         SceneManager.LoadScene("Main");
     }
 }

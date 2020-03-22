@@ -17,7 +17,9 @@ public class AnswerText : MonoBehaviour
 
     private float yPos = 300f;
 
-    Canvas canvas;
+    private Canvas canvas;
+
+    private WaitForSeconds refreshTime = new WaitForSeconds(2f);
 
     private void Awake()
     {
@@ -25,12 +27,8 @@ public class AnswerText : MonoBehaviour
         txtObjList = new List<GameObject>();
         fieldList = new List<GameObject>();
 
-        answers = InputStorage.GetAnswers(type, question.text.ToString());
-        Refresh();
-    }
-    private void Start()
-    {
-        Refresh();
+        answers = InputStorage.GetAnswers();
+        InvokeRepeating("Refresh", 0f, 2f);
     }
 
     public void Refresh()
@@ -75,7 +73,7 @@ public class AnswerText : MonoBehaviour
             rectTransform.localPosition = new Vector3(-50, yPos, 0);
             fieldList.Add(field);
 
-            if (type==0)
+            if (InputStorage.selectedType==0)
             {
                 GameObject upvote = Instantiate(upvoteButton) as GameObject;
                 upvote.transform.parent = gameObject.transform;
@@ -85,6 +83,7 @@ public class AnswerText : MonoBehaviour
             }
             yPos -= 155f;
         }
+        //yield return refreshTime;
     }
 
 }
