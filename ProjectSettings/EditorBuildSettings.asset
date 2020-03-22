@@ -18,6 +18,18 @@ EditorBuildSettings:
     path: Assets/Scenes/OfferHelp.unity
     guid: ac652565cd1f66244b4ab8c7df0cac1f
   - enabled: 1
-    path: Assets/Scenes/Question1.unity
+    path: Assets/Scenes/Question.unity
     guid: 852075140934d2a458388725d9a84c66
+  - enabled: 1
+    path: Assets/Scenes/Dashboard.unity
+    guid: 088cc6a852897904bbabdb09c223b5f2
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: a84f5c34686d7b546af88f3c6dfe8170
+  - enabled: 1
+    path: Assets/Scenes/MyQuestions.unity
+    guid: 8e7b39c445166e24e8c6a30d367f36a2
+  - enabled: 1
+    path: Assets/Scenes/Notifications.unity
+    guid: 80aea1c5eefe3cc4aaa5e8ea0705636c
   m_configObjects: {}

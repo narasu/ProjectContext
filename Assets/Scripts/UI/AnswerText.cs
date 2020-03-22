@@ -28,6 +28,10 @@ public class AnswerText : MonoBehaviour
         answers = InputStorage.GetAnswers(type, question.text.ToString());
         Refresh();
     }
+    private void Start()
+    {
+        Refresh();
+    }
 
     public void Refresh()
     {
