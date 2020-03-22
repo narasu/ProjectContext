@@ -19,8 +19,6 @@ public static class InputStorage
     private static Dictionary<int, string> aqID = new Dictionary<int, string>();
     private static Dictionary<string, List<string>> allQuestions = new Dictionary<string, List<string>>(); //key = question, value = list of answers
 
-    
-
     static InputStorage()
     {
         aqID.Add(0, "Ik heb stress wat moet ik doen :(");
@@ -67,7 +65,6 @@ public static class InputStorage
             Debug.Log("Question \"" + question + "\" does not exist!");
         }
     }
-
 
     /* 
      * The Get methods below take an int value "type" to specify whether to check for items the user posted, or "other users" 
@@ -127,7 +124,4 @@ public static class InputStorage
 
         return values;
     }
-
-    
-    
 }
