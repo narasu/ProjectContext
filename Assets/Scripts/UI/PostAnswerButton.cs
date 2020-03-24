@@ -23,6 +23,7 @@ public class PostAnswerButton : UIButton
             InputStorage.WriteAnswer(inputField.text.ToString());
             AnswerText answerText = canvas.GetComponent<AnswerText>();
             answerText.Refresh();
+            NotifTimer.answered = true;
         }
         inputField.Select();
         inputField.text = "";

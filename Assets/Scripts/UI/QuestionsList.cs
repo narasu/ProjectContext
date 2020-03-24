@@ -21,6 +21,7 @@ public class QuestionsList : MonoBehaviour
 
         questions = InputStorage.GetQuestionsList(type);
         InputStorage.selectedType = type;
+        InvokeRepeating("Refresh", 0f, 0.2f);
         Refresh();
     }
 
@@ -42,6 +43,8 @@ public class QuestionsList : MonoBehaviour
             txtObjList.Add(qb);
             txtObjList[i].transform.SetParent(gameObject.transform);
             txtObjList[i].transform.localScale = new Vector3(1, 1, 1);
+            
+            
 
             Text text = txtObjList[i].GetComponentInChildren<Text>();
             text.text = questions[i];
@@ -54,9 +57,15 @@ public class QuestionsList : MonoBehaviour
             rectTransform.sizeDelta = new Vector2(600, text.preferredHeight+30f);
 
             SwitchSceneButton ssb = txtObjList[i].GetComponent<SwitchSceneButton>();
+            ssb.type = type;
             ssb.questionKey = i;
 
-            y -= rectTransform.sizeDelta.y + text.preferredHeight;
+            y -= rectTransform.sizeDelta.y; // + text.preferredHeight;
+            if (i==0)
+            {
+                y -= 60;
+            }
         }
+        
     }
 }

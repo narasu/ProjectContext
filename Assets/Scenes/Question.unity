@@ -462,6 +462,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 778479753}
     m_Modifications:
+    - target: {fileID: 6952765864048992121, guid: 25e08b3867f37e44fbabf1cf96c138cb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.16981131
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952765864048992121, guid: 25e08b3867f37e44fbabf1cf96c138cb,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.16420433
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952765864048992121, guid: 25e08b3867f37e44fbabf1cf96c138cb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.16420433
+      objectReference: {fileID: 0}
     - target: {fileID: 6952765864353658874, guid: 25e08b3867f37e44fbabf1cf96c138cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,6 +610,7 @@ MonoBehaviour:
   question: {fileID: 299629738}
   type: 1
   font: {fileID: 12800000, guid: d0284454af900854cab82a36a3af8d41, type: 3}
+  c: {r: 0.16037738, g: 0.15356891, b: 0.15356891, a: 1}
   answerField: {fileID: 7078504994360016227, guid: 5cba432bb79cec1448cd6a12f6f095bb,
     type: 3}
   upvoteButton: {fileID: 3718036186151301985, guid: d9986d8cceae10f4ea00566cbf4d81ee,

@@ -8,12 +8,14 @@ public class AnswerText : MonoBehaviour
     [SerializeField] private Text question;
     [SerializeField] [Tooltip("0 for user question, 1 for other")] private int type;
     [SerializeField] private Font font;
+    [SerializeField] private Color c;
     [SerializeField] private GameObject answerField;
     [SerializeField] private GameObject upvoteButton;
 
     private List<string> answers;
     private List<GameObject> txtObjList;
     private List<GameObject> fieldList;
+    private List<GameObject> upvoteList;
 
     private float yPos = 300f;
 
@@ -26,9 +28,11 @@ public class AnswerText : MonoBehaviour
         canvas = GetComponent<Canvas>();
         txtObjList = new List<GameObject>();
         fieldList = new List<GameObject>();
+        upvoteList = new List<GameObject>();
 
         answers = InputStorage.GetAnswers();
-        InvokeRepeating("Refresh", 0f, 2f);
+        //InvokeRepeating("Refresh", 0f, 2f);
+        Refresh();
     }
 
     public void Refresh()
@@ -47,6 +51,18 @@ public class AnswerText : MonoBehaviour
         }
         fieldList.Clear();
 
+        foreach (GameObject go in fieldList)
+        {
+            Destroy(go);
+        }
+        fieldList.Clear();
+
+        foreach (GameObject go in upvoteList)
+        {
+            Destroy(go);
+        }
+        upvoteList.Clear();
+
         for (int i = 0; i < answers.Count; i++)
         {
             
@@ -57,6 +73,7 @@ public class AnswerText : MonoBehaviour
 
             Text text = txtObjList[i].GetComponent<Text>();
             text.font = font;
+            text.color = c;
             text.text = answers[i];
             text.fontSize = 48;
             text.alignment = TextAnchor.UpperLeft;
@@ -73,13 +90,18 @@ public class AnswerText : MonoBehaviour
             rectTransform.localPosition = new Vector3(-50, yPos, 0);
             fieldList.Add(field);
 
-            if (InputStorage.selectedType==0)
+            RectTransform fieldRect;
+            fieldRect = field.GetComponent<RectTransform>();
+            fieldRect.sizeDelta = new Vector2(fieldRect.sizeDelta.x, text.preferredHeight);
+
+        if (InputStorage.selectedType==0)
             {
                 GameObject upvote = Instantiate(upvoteButton) as GameObject;
                 upvote.transform.parent = gameObject.transform;
                 upvote.transform.localScale = new Vector3(1, 1, 1);
                 Vector3 upvoteOffset = new Vector3(1.59f, 0);
                 upvote.transform.position = field.transform.position + upvoteOffset;
+                upvoteList.Add(upvote);
             }
             yPos -= 155f;
         }

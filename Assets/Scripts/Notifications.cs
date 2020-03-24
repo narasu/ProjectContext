@@ -12,9 +12,10 @@ public static class Notifications
     private static int notifCount = 0;
     static Notifications()
     {
-        Add("You've got a new item!", "CharCreate");
-        Add("Someone has replied to your question!", "MyQuestions");
-        notifCount = 2;
+        Add("Welkom bij HelpQuest! Stel een vraag!", "Ask");
+        //Add("You've got a new item!", "CharCreate");
+        //Add("Someone has replied to your question!", "MyQuestions");
+        //notifCount = 2;
     }
 
     public static void Add(string notif, string target)

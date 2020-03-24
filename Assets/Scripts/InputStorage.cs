@@ -31,17 +31,24 @@ public static class InputStorage
 
     static InputStorage()
     {
-        aqID.Add(0, "Ik heb stress wat moet ik doen :(");
-        aqID.Add(1, "Het gaat echt niet goed met mij ik raak in paniek aaaaaaaa mag school gecanceld worden?");
+        aqID.Add(0, "Ik kan geen manier vinden om te ontspannen, heeft iemand tips?");
+        aqID.Add(1, "Wat kan ik koken op laag budget dat gezond is?");
+        aqID.Add(2, "Ik heb een artblock, hoe kan ik hieruit komen?");
 
         foreach (string value in aqID.Values)
         {
             allQuestions.Add(value, new List<string>());
         }
 
+        allQuestions["Ik kan geen manier vinden om te ontspannen, heeft iemand tips?"].Add("Loop een rondje buiten!");
+        allQuestions["Ik kan geen manier vinden om te ontspannen, heeft iemand tips?"].Add("Lees een boek!");
+
+        allQuestions["Wat kan ik koken op laag budget dat gezond is?"].Add("Pasta met tomatensaus!");
+
+
         firstTimeStartup = true;
         /*allQuestions.Add("Ik heb stress wat moet ik doen :(", new List<string>());
-        allQuestions.Add("Het gaat niet goed met mij, wattefak al deze shit en shit en shit kanker godverdomme aaaaaaaaaaaaaaaaaa vertel mij wat zou jij doen", new List<string>());
+        allQuestions.Add("Het gaat niet goed met mij, wattefak al deze shit kanker godverdomme aaaaaaaaaaaaaaaaaa", new List<string>());
         */
     }
 
